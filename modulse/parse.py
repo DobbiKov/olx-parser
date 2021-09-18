@@ -1,3 +1,4 @@
+from modulse.parse_skylot import parse_skylot
 from modulse.parse_promua import parse_promua
 from modulse.parse_besplatka import parse_besplatka
 from modulse.parse_bazar import parse_bazar
@@ -23,9 +24,12 @@ besplatka_link = "https://besplatka.ua/ru/electronika-i-bitovaya-tehnika/kompyut
 # besplatka_zalit_link = "https://besplatka.ua/ru/electronika-i-bitovaya-tehnika/kompyutery-i-komplektuyushie/noutbuki/b-u/15-6-dyuimov/q-%D0%B7%D0%B0%D0%BB%D0%B8%D1%82?prop[2][to]=2000&currency=UAH"
 
 bazarua_link = "https://bazar.ua/elektronika/kompyutery/noutbuki/?c=80&ct=0&lt=1&sort=new&page=1&q=&p%5Bf%5D=&p%5Bt%5D=2000&p%5Bc%5D=1&d%5B1%5D%5B%5D=3&d%5B2%5D%5B%5D=1"
+
+skylot_link = "https://skylots.org/c111254/Noutbuki/?search=&desc_check=0&seller_id=0&new=0&ex=0&end_ex=0&price_from=&price_to=2000&items_from=&items_to=&city=&filters%5B%5D=716&filters%5B%5D=1095&filters%5B%5D=994083&catid=111254&orderby=7#?"
 def parse():
     # olx_neispravny_links = parse_olx(olx_neispravny_link)
     # olx_zalit_links = parse_olx(olx_zalit_link)
+    skylot_links = parse_skylot(skylot_link)
     bazar_links = parse_bazar(bazarua_link)
     besplatka_links = parse_besplatka(besplatka_link)
     promua_links = parse_promua(promua_link)
@@ -38,11 +42,12 @@ def parse():
     arrays_links = [
         # olx_neispravny_links, 
         # olx_zalit_links,
+        skylot_links,
         olx_ddr3_links,
         olx_ddr4_links,
         bazar_links,
         besplatka_links,
-        promua_links
+        # promua_links
     ]
 
     links = []
@@ -71,6 +76,7 @@ def link_handler(link: str):
     return True
 
 def send_links(array):
+    array = list(set(array))
     if len(array) == 0:
         return
     text = f"Новые объявления {len(array)}:"

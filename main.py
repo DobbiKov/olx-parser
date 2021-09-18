@@ -1,3 +1,4 @@
+from modulse.parse_skylot import parse_skylot
 from modulse.parse_promua import parse_promua
 from modulse.parse_besplatka import parse_besplatka
 from modulse.parse_bazar import parse_bazar
@@ -12,7 +13,6 @@ logger.add('./logging/debug.txt', format="{time} {level} {message}", level="DEBU
 
 def main():
     logger.info("APP STARTED!")
-
     while True:
         parse()
         time.sleep(random.randint(240, 300))
