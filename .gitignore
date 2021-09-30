@@ -3,3 +3,9 @@ __pycache__
 config.py
 /env
 /logging
+index.html
+parsed_link.txt
+parsed_link_temp.txt
+logging
+logs
+log
