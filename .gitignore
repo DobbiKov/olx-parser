@@ -4,8 +4,8 @@ config.py
 /env
 /logging
 index.html
-parsed_link.txt
-parsed_link_temp.txt
+parsed_links.txt
+parsed_links_temp.txt
 logging
 logs
 log

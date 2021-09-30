@@ -1,3 +1,4 @@
+from modulse.check_db_file import check_db_file
 from modulse.parse_skylot import parse_skylot
 from modulse.parse_promua import parse_promua
 from modulse.parse_besplatka import parse_besplatka
@@ -12,6 +13,7 @@ import random
 logger.add('./logging/debug.txt', format="{time} {level} {message}", level="DEBUG") 
 
 def main():
+    check_db_file()
     logger.info("APP STARTED!")
     while True:
         parse()
